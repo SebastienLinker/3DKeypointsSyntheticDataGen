@@ -3,12 +3,16 @@
 This repository proposes a simple approach to generate synthetic data for 2D and 3D keypoints.
 It allows one to generate a basic keypoints dataset to go from 2D to 3D without the need to learn complex libraries.
 
+![image](https://editor.analyticsvidhya.com/uploads/65603fig.png)
+
+Can we get 3D reconstructions from those keypoints?
+
 ## Data generation
 
 An example is provided in file `augment_h36m.py`. This loads a copy of H36m dataset and update some keypoints.
 In the example, the foot keypoints are generated artificially, based on standard movement of the human knees.
 
-TODO ideas (I'll probably never do all of that on my free time): 
+TODO ideas (I'll probably never do all of that on my free time, feel free to make PRs): 
 
   - [x] Simple synthetic data generation
   - [ ] Describe joints movements using quaternions 
