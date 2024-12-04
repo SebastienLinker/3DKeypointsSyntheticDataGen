@@ -45,3 +45,47 @@ TODO:
 
   - [x] Simple python demo script (`apply_2d_and_3d.py`), that processes 2D keypoints detection and upgrade to 3D with SimpleBaseline. It then calculates the distances hip/knee and hip/ankle on the resulting 3D, with two models. I recommend using the original checkpoint from MMPose and a newly trained checkpoint, with synthetic data, for a fair comparison and validation of the approach
   - [ ] Notebook with animated 3D views
+
+The 2D model in this example is [HRNet dark](https://github.com/open-mmlab/mmpose/blob/v1.3.2/configs/body_2d_keypoint/topdown_heatmap/mpii/hrnet_dark_mpii.md), trained on MPII dataset.
+The demo code measures the distance between hips and knees, and then the distance between hips and ankle. On the test image, the latter is expected to be short for the left leg. Below is a sample output:
+
+``` console
+1st model results
+left leg
+[[-293.85285907 -525.18202608 5461.63515928]
+ [-293.74601971 -524.84906592 5461.91864272]
+ [-293.65775186 -525.1680771  5462.11168426]]
+Distance between hip and knees
+0.45015550510704466
+Distance between hip and foot
+0.515109165200248
+Right leg
+[[-293.90355043 -525.15212697 5461.64464776]
+ [-293.86642318 -524.78511029 5461.81986042]
+ [-293.75353483 -524.45447778 5461.88815796]]
+Distance between hip and knees
+0.4083860339809041
+Distance between hip and foot
+0.7540001893661517
+Loads checkpoint by local backend from path: work_dirs/cfg/best_MPJPE_epoch_70_bak.pth
+
+2nd model results
+left leg
+[[-293.82325543 -525.16779201 5461.67113275]
+ [-293.74142388 -524.78317978 5461.81832662]
+ [-293.6266207  -525.07278836 5461.57193941]]
+Distance between hip and knees
+0.4198678396147984
+Distance between hip and foot
+0.23985459710494678
+Right leg
+[[-293.93315508 -525.16618675 5461.60873135]
+ [-293.868663   -524.75359278 5461.74127185]
+ [-293.81253732 -524.36663746 5461.63542099]]
+Distance between hip and knees
+0.4381323936884442
+Distance between hip and foot
+0.8090364921942099
+```
+
+Even if the backprojection looks correct, we can see from Euclidean distances that the second model (retrained with synthetic data) gives a more realistic result.

@@ -813,7 +813,7 @@ model = dict(
     type='PoseLifter')
 optim_wrapper = dict(optimizer=dict(lr=0.001, type='Adam'))
 param_scheduler = [
-    dict(by_epoch=False, end=80, gamma=0.96, step_size=10000, type='StepLR'),
+    dict(by_epoch=False, end=80, gamma=0.96, step_size=100000, type='StepLR'),
 ]
 resume = False
 target_mean = ([
